@@ -12,11 +12,63 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#error").hide(); //ocultando el div de los errores
+
+            //indicar que las validaciones del formulario se ejecutaran solo cuando se
+            //presione el submit
+            $("#formulario_sesion").submit(function () {
+                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var nombre_usuario = $('#nombre_usuario').val();
+                var contrasena = $('#contrasena').val();
+                if ($("#nombre_usuario").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre de usuario no debe estar vacío";
+                }
+
+                if (nombre_usuario.length >= 8) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>El nombre de usuario debe tener un minimo de 8 caracteres";
+                }
+
+                if (nombre_usuario.length <= 20) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>El nombre de usuario debe tener un maximo de 20 caracteres";
+                }
+
+                if ($("#contrasena").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo contraseña no debe estar vacío";
+                }
+
+                if (contrasena.length >= 8) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>La contraseña debe tener un minimo de 8 caracteres";
+                }
+
+                if (contrasena.length <= 20) {
+                    
+                } else {
+                    mensaje = mensaje + "<br>Debe tener un maximo de 20 caracteres";
+                }
+
+                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
+                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+                    $("#error").show();//hace visible el div
+                    event.preventDefault();//evita que los datos del formulario se envien
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     <!--Menu Bar-->
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #008a7b">
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
         <!-- Brand -->
         <a class="navbar-brand" href="#" style="color:#000"><h4>Fundación Apoyo APP</h1></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -50,7 +102,7 @@
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
-            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid rgba(255, 0, 0, 0.424);"> <br>
+            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000"> <br>
                 <h2>Iniciar sesión</h2>
                 <form action="{% url 'home' %}" method="POST" name="formulario_sesion" id="formulario_sesion">
                     {% csrf_token %}
