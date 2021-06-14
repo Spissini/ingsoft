@@ -29,13 +29,13 @@
                 }
 
                 if (nombre_usuario.length >= 8) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>El nombre de usuario debe tener un minimo de 8 caracteres";
                 }
 
                 if (nombre_usuario.length <= 20) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>El nombre de usuario debe tener un maximo de 20 caracteres";
                 }
@@ -45,13 +45,13 @@
                 }
 
                 if (contrasena.length >= 8) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>La contraseña debe tener un minimo de 8 caracteres";
                 }
 
                 if (contrasena.length <= 20) {
-                    
+
                 } else {
                     mensaje = mensaje + "<br>Debe tener un maximo de 20 caracteres";
                 }
@@ -70,7 +70,9 @@
     <!--Menu Bar-->
     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
         <!-- Brand -->
-        <a class="navbar-brand" href="#" style="color:#000"><h4>Fundación Apoyo APP</h1></a>
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -102,7 +104,8 @@
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
-            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000"> <br>
+            <div class="col-md-12 centrado"
+                style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000"> <br>
                 <h2>Iniciar sesión</h2>
                 <form action="{% url 'home' %}" method="POST" name="formulario_sesion" id="formulario_sesion">
                     {% csrf_token %}
