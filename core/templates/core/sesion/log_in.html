@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+</head>
+
+<body>
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #008a7b">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000"><h4>Fundación Apoyo APP</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Juegos</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">CATEGORIAS</h6>
+                        <a class="dropdown-item" href="Menubar/Juegos/RiotGames.html">Riot Games</a>
+                        <a class="dropdown-item" href="Menubar/Juegos/Fortnite.html">Fortnite</a>
+                        <a class="dropdown-item" href="#">Albion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br>
+    <div class="container separar_bottom">
+        <div class="row">
+            <div class="col-md-12 centrado" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid rgba(255, 0, 0, 0.424);"> <br>
+                <h2>Iniciar sesión</h2>
+                <form action="{% url 'home' %}" method="POST" name="formulario_sesion" id="formulario_sesion">
+                    {% csrf_token %}
+                    <br>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="nombre_usuario">Nombre de Usuario:</label>
+                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
+                            placeholder="Ingrese el nombre de usuario">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="contrasena">Contraseña:</label>
+                        <input type="password" class="form-control" name="contrasena" id="contrasena"
+                            placeholder="*************">
+                    </div>
+
+                    <div class="form-group">
+                        <div id="error" class="alert alert-danger"></div>
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                    </div>
+
+                    <a href="#">¿Has olvidado tu contraseña?</a> <br><br>
+                    <a href="#">¿No tienes cuenta? Create una ahora mismo :)</a> <br><br>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>

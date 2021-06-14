@@ -5,3 +5,6 @@ from django.shortcuts import render, redirect
 
 def home(request):
     return render(request, 'core/home.html')
+
+def log_in(request):
+    return render(request, 'core/sesion/log_in.html')
