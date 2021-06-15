@@ -15,38 +15,46 @@
 </head>
 
 <body>
-    <!--Menu Bar-->
-    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
-        <!-- Brand -->
-        <a class="navbar-brand" href="#" style="color:#000"><h4>Fundación Apoyo APP</h1></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <!-- Links -->
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'home' %}">Home</a>
-                </li>
+        <!--Menu Bar-->
+        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" style="color:#000">
+                <h4>Fundación Apoyo APP</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+    
+                     <!-- Dropdown -->
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                        <div class="dropdown-menu">
+                            <h6 class="color container">Opción</h6>
+                            <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                            <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nosotros</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                    </li>
+    
+                </ul>
+            </div>
+        </nav>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
-                </li>
-
-                <!-- Dropdown -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Juegos</a>
-                    <div class="dropdown-menu">
-                        <h6 class="color container">CATEGORIAS</h6>
-                        <a class="dropdown-item" href="Menubar/Juegos/RiotGames.html">Riot Games</a>
-                        <a class="dropdown-item" href="Menubar/Juegos/Fortnite.html">Fortnite</a>
-                        <a class="dropdown-item" href="#">Albion</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="container" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000"">
+    <div class="container separar_top" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000">
         <div class="row">
             {% if messages %}
             <div>
