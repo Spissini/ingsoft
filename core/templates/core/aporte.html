@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+</head>
+
+<body>
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000"><h4>Fundación Apoyo APP</h1></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Juegos</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">CATEGORIAS</h6>
+                        <a class="dropdown-item" href="Menubar/Juegos/RiotGames.html">Riot Games</a>
+                        <a class="dropdown-item" href="Menubar/Juegos/Fortnite.html">Fortnite</a>
+                        <a class="dropdown-item" href="#">Albion</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container box" style="color: #b1b1b1">
+        <div class="row">
+            {% if messages %}
+            <div>
+                {% for i in messages %}
+                    <p style="color: red;">{{ i }}</p>
+                {% endfor %}
+            </div>
+
+            {% endif %}
+
+            <form action="{% url 'reg_aporte' %}" id="formulario_apor" method="POST" name="formulario_apor">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="cod_equip">Código del Aporte: </label>
+                    <input class="form-control" type="number" id="cod_apor" name="cod_apor" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Cantidad Aporte: </label>
+                    <input class="form-control" type="text" id="can_apor" name="can_apor" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Fecha Aporte: </label>
+                    <input class="form-control" type="date" id="fec_apor" name="fec_apor" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Rut Aportador: </label>
+                    <input class="form-control" type="text" id="rut_aporta" name="rut_aporta" required>
+                </div>
+                <div class="form-group">
+                    <label for="cod_equip">Nombre Aportador: </label>
+                    <input class="form-control" type="text" id="nom_aporta" name="nom_aporta" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Apellidos Aportador: </label>
+                    <input class="form-control" type="text" id="ap_aporta" name="ap_aporta" required>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Numero Tarjeta: </label>
+                    <input class="form-control" type="text" id="num_tar" name="num_tar" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Registrar Aporte</button>
+
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
