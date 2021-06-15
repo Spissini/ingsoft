@@ -6,3 +6,26 @@ body{
     text-align: center;
 }
 
+/* SEPARADORES */
+.separar_bottom{
+    margin-bottom: 3%;
+}
+
+.separar_top{
+    margin-top: 3%;
+}
+
+.separar_left{
+    margin-left: 3%;
+}
+
+.separar_right{
+    margin-right: 3%;
+}
+/* FIN SEPARADORES */
+
+.responsive_imagenes{
+    width: 100%;
+    max-width: 550px;
+    border: 2px solid #000000;
+}
