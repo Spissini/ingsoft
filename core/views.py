@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.http import request
 from django.shortcuts import render, redirect
 from .models import APORTE
-
+ 
 # Create your views here
 
 def home(request):
@@ -14,17 +14,16 @@ def log_in(request):
 def aporte(request):
     return render(request, 'core/aporte.html')
 
-
 def reg_aporte(request):
     codApo = request.POST['cod_apor']
     cantApo = request.POST['can_apor']
-    fecApo = request.POST['fec_apor']
     rutAport = request.POST['rut_aporta']
     nomAport = request.POST['nom_aporta']
     apeAport = request.POST['ap_aporta']
     numTarj = request.POST['num_tar']
 
-    APORTE.objects.create(idAporte = codApo, cantAporte = cantApo, fechaAporte = fecApo,rutAportador = rutAport, nombAportador = nomAport, apeAportador = apeAport, numTarjeta = numTarj)
-    
+    APORTE.objects.create(idAporte = codApo, cantAporte = cantApo, rutAportador = rutAport, nombAportador = nomAport, apeAportador = apeAport, numTarjeta = numTarj)
+
     messages.success(request,'Aporte Registrado')
     return redirect('aporte')
+
