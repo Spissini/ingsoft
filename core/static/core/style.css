@@ -6,6 +6,10 @@ body{
     text-align: center;
 }
 
+.color{
+    color: #000000;
+}
+
 /* SEPARADORES */
 .separar_bottom{
     margin-bottom: 3%;
@@ -27,5 +31,11 @@ body{
 .responsive_imagenes{
     width: 100%;
     max-width: 550px;
+    border: 2px solid #000000;
+}
+
+.responsive_imagen_logo{
+    width: 100%;
+    max-width: 20px;
     border: 2px solid #000000;
 }
