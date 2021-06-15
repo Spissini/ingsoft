@@ -27,3 +27,7 @@ def reg_aporte(request):
     messages.success(request,'Aporte Registrado')
     return redirect('aporte')
 
+def visualizaraporte(request):
+    visaporte = APORTE.objects.all()
+    contexto = {"VisuAporte": visaporte}
+    return render(request, 'core/visualizaraporte.html', contexto)
