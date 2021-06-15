@@ -6,12 +6,11 @@ from django.db.models.fields.related import ForeignKey
 class APORTE(models.Model):
     idAporte = models.IntegerField(primary_key=True, verbose_name='Numero Aporte')
     cantAporte = models.IntegerField(verbose_name='Cantidad de Aporte')
-    fechaAporte = models.DateField(verbose_name='Fecha del aporte')
     rutAportador = models.IntegerField(verbose_name='Rut del aportador')
     nombAportador = models.CharField(max_length=15, verbose_name='Nombre del aportador')
     apeAportador = models.CharField(max_length=25, verbose_name='Apellidos del aportador')
     numTarjeta = models.IntegerField(verbose_name='Numero de la Tarjeta')
-    def __str__(self):
+    def str(self):
             return self.idAporte
 
 #class EMPRETAIL(models.Model):
