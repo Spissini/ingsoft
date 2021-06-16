@@ -30,12 +30,16 @@ body{
 
 .responsive_imagenes{
     width: 100%;
-    max-width: 550px;
+    max-width: 250px;
     border: 2px solid #000000;
 }
 
 .responsive_imagen_logo{
     width: 100%;
-    max-width: 550px;
-    border: 2px solid #000000;
+    max-width: 100px;
+}
+
+.r2{
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }

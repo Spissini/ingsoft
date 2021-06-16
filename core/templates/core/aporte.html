@@ -12,6 +12,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#error").hide(); //ocultando el div de los errores
+
+            //indicar que las validaciones del formulario se ejecutaran solo cuando se
+            //presione el submit
+            $("#formulario_reg").submit(function () {
+                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var cod_equipo = $('cod_equip').val();
+                var nombre = $('#nombre').val();
+
+                if ($("#cod_equipo").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Codigo del Equipamiento  no debe estar vacío";
+                }
+
+                if (isNaN($("#cod_equipo").val())) {
+                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
+                }
+
+                if (cod_equipo.length <= 4) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Codigo del Equipamiento debe tener un maximo de 4 digitos";
+                }
+
+                if ($("#nombre").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Nombre del equipamiento no debe estar vacío";
+                }
+
+                if (nombre.length <= 40) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Nombre del equipamiento debe tener un maximo de 40 caracteres";
+                }
+
+                if ($("#armaduraxd").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                }
+
+                if ($("#casco").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                }
+
+                if ($("#botas").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                }
+
+                if ($("#arma").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                }
+                
+
+                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
+                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+                    $("#error").show();//hace visible el div
+                    event.preventDefault();//evita que los datos del formulario se envien
+
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
