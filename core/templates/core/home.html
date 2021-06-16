@@ -54,19 +54,31 @@
         </div>
     </nav>
     <br><br>
-    <div class="centrado">
-        <h1 class="color">Fundacion Apoyo APP</h1>
-        <a href="#">
-            <img src="{% static 'core/img/logo.png' %}" alt="Logo" class="responsive_imagenes_logo">
-        </a>
+    <div class="row">
+        <div class="container centrado">
+            <h1 class="color">Fundacion Apoyo APP</h1>
+                <img src="{% static 'core/img/logo.png' %}" alt="Logo"
+                    class="responsive_imagen_logo">
+        </div>
     </div>
     <br><br>
-    <div class="centrado">
-        <h3>Hacer un Aporte</h3>
-        <a href="#">
-            <img src="{% static 'core/img/aportmonet.PNG' %}" alt="Aporte monetario" class="responsive_imagenes separar_bottom separar_top">
-            <br><button>Hacer aporte</button>
-        </a>
+    <div class="row centrado container r2">
+        <div class="centrado col-md-6">
+            <h3>Hacer un Aporte</h3>
+            <a href="{% url 'aporte' %}">
+                <img src="{% static 'core/img/aportmonet.PNG' %}" alt="Aporte monetario"
+                    class="responsive_imagenes"><br>
+                <br><button class="btn btn-primary">Hacer aporte</button>
+            </a>
+        </div>
+        <div class="centrado col-md-6">
+            <h3>Hacer un Aporte</h3>
+            <a href="{% url 'aporte' %}">
+                <img src="{% static 'core/img/aportmonet.PNG' %}" alt="Aporte monetario"
+                    class="responsive_imagenes"><br>
+                <br><button class="btn btn-primary">Hacer aporte</button>
+            </a>
+        </div>
     </div>
     <br>
 </body>
