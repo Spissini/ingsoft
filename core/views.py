@@ -11,6 +11,9 @@ def home(request):
 def log_in(request):
     return render(request, 'core/sesion/log_in.html')
 
+def sign_in(request):
+    return render(request, 'core/sesion/sign_in.html')
+
 def aporte(request):
     return render(request, 'core/aporte.html')
 
@@ -40,11 +43,10 @@ def eliminaraporte(request, id):
 
 
 def editaraporte(request, id):
-    ap1 = APORTE.objects.get(idEquipo = id)
+    ap1 = APORTE.objects.get(idAporte = id)
     
-
     contexto = {
-        "apor11" : ap1,
+        "apor11" : ap1
         
     }
     return render(request, 'core/editaraporte.html', contexto)
@@ -66,4 +68,4 @@ def edaportes(request):
     a1.numTarjeta = nTarjet
     a1.save()
     messages.success(request, 'Aporte editado correctamente')
-    return redirect('editaraporte')
+    return redirect('visualizaraporte')

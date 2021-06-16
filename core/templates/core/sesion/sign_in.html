@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/css/login_style.css' %}" />
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#error").hide(); //ocultando el div de los errores
+
+            //indicar que las validaciones del formulario se ejecutaran solo cuando se
+            //presione el submit
+            $("#formulario_crearcuen").submit(function () {
+                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var nombre_completo = $('#nombre_completo').val();
+                var contrasena = $('#contrasena').val();
+                var nombre_usuario = $('#nombre_usuario').val();
+                var contrasena2 = $('#contrasena2').val();
+                if ($("#nombre_completo").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
+                }
+
+                if (nombre_completo.length >= 10) {
+
+                } else {
+                    mensaje = mensaje + "<br>Nombre y Apellido deben tener un minimo de 10 caracteres";
+                }
+
+                if (nombre_completo.length <= 35) {
+
+                } else {
+                    mensaje = mensaje + "<br>Nombre y Apellido debe tener un maximo de 35 caracteres";
+                }
+
+                if ($("#nombre_usuario").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Nombre de Usuario no debe estar vacío";
+                }
+
+                if (nombre_usuario.length >= 8) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Nombre de Usuario debe tener un minimo de 8 caracteres";
+                }
+
+                if (nombre_usuario.length <= 20) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Nombre de Usuario debe tener un maximo de 20 caracteres";
+                }
+
+                if ($("#correo_elec").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Correo Electrónico no puede estar vacío";
+                }
+
+                if ($("#contrasena").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Contraseña no debe estar vacío";
+                }
+
+                if (contrasena.length >= 8) {
+
+                } else {
+                    mensaje = mensaje + "<br>La contraseña debe tener un minimo de 8 caracteres";
+                }
+
+                if (contrasena.length <= 20) {
+
+                } else {
+                    mensaje = mensaje + "<br>La contraseña debe tener un maximo de 20 caracteres";
+                }
+
+                if ($("#contrasena2").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Ingrese Contraseña Nuevamente no debe estar vacío";
+                }
+
+                if (contrasena == contrasena2) {
+
+                } else {
+                    mensaje = mensaje + "<br>Las contraseñas deben ser iguales";
+                }
+
+
+
+                if ($("#pais").val().trim().length == 1) {
+                    mensaje = mensaje + "<br>Debe elegir un país valido";
+                }
+
+
+                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
+                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+                    $("#error").show();//hace visible el div
+                    event.preventDefault();//evita que los datos del formulario se envien
+
+                }
+            });
+        });
+    </script>
+
+
+</head>
+
+<body>
+     <!--Menu Bar-->
+     <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                 <!-- Dropdown -->
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">Opción</h6>
+                        <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                        <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+    <div class="container separar_bottom">
+        <div class="row">
+            <div class="container espaciado_superior centrado"
+                style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231); border: 2px solid rgba(255, 0, 0, 0.424);">
+                <h2>CREA TU CUENTA</h2>
+
+                <form action="{% url 'log_in' %}" method="POST" name="formulario_crearcuen" id="formulario_crearcuen">
+                    {% csrf_token %}
+                    <br><br>
+
+                    <div class="form-group">
+                        <label for="nombre_completo">Nombre y Apellido:</label>
+                        <input type="text" class="form-control" name="nombre_completo" id="nombre_completo"
+                            placeholder="Ingrese su nombre y apellido">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre_usuario">Nombre de Usuario:</label>
+                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
+                            placeholder="Ingrese el nombre de usuario">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="correo_elec">Correo Electrónico:</label>
+                        <input type="email" class="form-control" name="correo_elec" id="correo_elec"
+                            placeholder="rgb_lovers@ejemplo.com">
+                    </div>
+
+                    <p>Género:</p>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero" value="masculino"
+                                checked>Masculino
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero"
+                                value="femenino">Femenino
+                        </label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="genero">
+                            <input type="radio" class="form-check-input" name="genero" id="genero" value="otros">Otros
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pais">Seleccione su Pais</label>
+                        <select name="pais" id="pais" class="form-control">
+                            <option value="1">Seleccione una opcion</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Bolivia">Bolivia</option>
+                            <option value="Chile">Chile</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Costa Rica">Costa Rica</option>
+                            <option value="Cuba">Cuba</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="España">España</option>
+                            <option value="El Salvador">El Salvador</option>
+                            <option value="Guatemala">Guatemala</option>
+                            <option value="Honduras">Honduras</option>
+                            <option value="Mexico">México</option>
+                            <option value="Nicaragua">Nicaragua</option>
+                            <option value="Panama">Panamá</option>
+                            <option value="Paraguay">Paraguay</option>
+                            <option value="Peru">Perú</option>
+                            <option value="Republica Dominicana">República Dominicana</option>
+                            <option value="Uruguay">Uruguay</option>
+                            <option value="Venezuela">Venezuela</option>
+                            <option value="Puerto Rico">Puerto Rico</option>
+                            <option value="Otros">Otros</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="contrasena">Contraseña:</label>
+                        <input type="password" class="form-control" name="contrasena" id="contrasena"
+                            placeholder="*************">
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: #dadada;" for="contrasena2">Ingrese Contraseña Nuevamente:</label>
+                        <input type="password" class="form-control" name="contrasena2" id="contrasena2"
+                            placeholder="*************">
+                    </div>
+
+                    <div class="form-group">
+                        <div id="error" class="alert alert-danger"></div>
+
+
+                        <a href="{% url 'log_in' %}">
+                            <button type="submit" class="btn btn-primary">Aceptar</button>
+                        </a>
+
+                    </div>
+
+                    <a href="{% url 'log_in' %}">Volver</a> <br><br>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+</html>
