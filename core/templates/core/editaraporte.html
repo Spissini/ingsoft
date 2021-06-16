@@ -6,12 +6,123 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Modificar aporte</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#error").hide(); //ocultando el div de los errores
+
+            //indicar que las validaciones del formulario se ejecutaran solo cuando se
+            //presione el submit
+            $("#edit_vis").submit(function () {
+                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
+                var iAporte = $('#iAporte').val();
+                var cAporte = $('#cAporte').val();
+                var rAporte = $('#rAporte').val();
+                var nAportador = $('#nAportador').val();
+                var aAportador = $('#aAportador').val();
+                var nTarjeta = $('#num_tar').val();
+
+                if ($("#iAporte").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Codigo del Aporte no debe estar vacío";
+                }
+
+                if (isNaN($("#iAporte").val())) {
+                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
+                }
+
+                if (iAporte.length <= 4) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 4 digitos";
+                }
+                //sssssssssssssssssssssssssss
+                if ($("#cAporte").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Cantidad del Aporte no debe estar vacío";
+                }
+
+                if (isNaN($("#cAporte").val())) {
+                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
+                }
+
+                if (cAporte.length <= 9) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 9 digitos";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#rAporte").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Rut del Aportador no debe estar vacío";
+                }
+
+                if (isNaN($("#rAporte").val())) {
+                    mensaje = mensaje + "<br>El Rut solo pueden ser números";
+                }
+
+                if (rAporte.length <= 9) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Rut debe tener un maximo de 9 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#nAportador").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
+                }
+
+                if (nAportador.length >= 10) {
+
+                } else {
+                    mensaje = mensaje + "<br>El nombre debe tener un minimo de 10 caracteres";
+                }
+
+                if (nAportador.length <= 35) {
+
+                } else {
+                    mensaje = mensaje + "<br>El nombre debe tener un maximo de 35 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#aAportador").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo apellido no debe estar vacío";
+                }
+
+                if (aAportador.length >= 10) {
+
+                } else {
+                    mensaje = mensaje + "<br>El apellido debe tener un minimo de 10 caracteres";
+                }
+
+                if (aAportador.length <= 35) {
+
+                } else {
+                    mensaje = mensaje + "<br>El apellido debe tener un maximo de 35 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#nTarjeta").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Numero de la tarjeta no debe estar vacío";
+                }
+
+                if (isNaN($("#nTarjeta").val())) {
+                    mensaje = mensaje + "<br>El Numero de la tarjeta solo pueden ser números";
+                }
+
+                if (nTarjeta.length <= 16) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Numero de la tarjeta debe tener un maximo de 16 digitos";
+                }
+                //ssssssssssssssssssssssssssss
+                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
+                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
+                    $("#error").show();//hace visible el div
+                    event.preventDefault();//evita que los datos del formulario se envien
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -53,8 +164,11 @@
                 </ul>
             </div>
         </nav>
-        <div class="container box" style="color: #b1b1b1">
+        <div class="container separar_top separar_bottom"
+        style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000">
             <div class="row">
+                <div class="col-md-12 centrado">
+                    <h1>Modificar Aporte</h1>
                 <form action="{% url 'edaportes' %}" id="edit_vis" method="POST" name="edit_vis">
                     {% csrf_token %}
                     <div class="form-group">
@@ -91,6 +205,7 @@
     
     
                 </form>
+            </div>
             </div>
         </div>
 </body>

@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -67,50 +67,50 @@
 </head>
 
 <body>
-        <!--Menu Bar-->
-        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="color:#000">
-                <h4>Fundación Apoyo APP</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <!-- Links -->
-                <ul class="navbar-nav mr-auto">
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-    
-                     <!-- Dropdown -->
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
-                        <div class="dropdown-menu">
-                            <h6 class="color container">Opción</h6>
-                            <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
-                            <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
-                        </div>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
-                    </li>
-    
-                </ul>
-            </div>
-        </nav>
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">Opción</h6>
+                        <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                        <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
 
     <br><br>
     <div class="container separar_bottom">
         <div class="row">
             <div class="col-md-12 centrado"
-                style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000"> <br>
+                style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231); border: 2px solid #000"> <br>
                 <h2>Iniciar sesión</h2>
                 <form action="{% url 'home' %}" method="POST" name="formulario_sesion" id="formulario_sesion">
                     {% csrf_token %}
@@ -139,7 +139,6 @@
                 </form>
             </div>
         </div>
-    </div>
     </div>
 
 </body>

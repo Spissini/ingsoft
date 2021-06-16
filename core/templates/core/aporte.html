@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Hacer aporte</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -18,57 +18,107 @@
 
             //indicar que las validaciones del formulario se ejecutaran solo cuando se
             //presione el submit
-            $("#formulario_reg").submit(function () {
+            $("#formulario_apor").submit(function () {
                 var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
-                var cod_equipo = $('cod_equip').val();
-                var nombre = $('#nombre').val();
+                var cod_apor = $('#cod_apor').val();
+                var can_apor = $('#can_apor').val();
+                var rut_aporta = $('#rut_aporta').val();
+                var nom_aporta = $('#nom_aporta').val();
+                var ap_aporta = $('#ap_aporta').val();
+                var num_tar = $('#num_tar').val();
 
-                if ($("#cod_equipo").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Codigo del Equipamiento  no debe estar vacío";
+                if ($("#cod_apor").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Codigo del Aporte no debe estar vacío";
                 }
 
-                if (isNaN($("#cod_equipo").val())) {
+                if (isNaN($("#cod_apor").val())) {
                     mensaje = mensaje + "<br>El codigo solo pueden ser números";
                 }
 
-                if (cod_equipo.length <= 4) {
+                if (cod_apor.length <= 4) {
 
                 } else {
-                    mensaje = mensaje + "<br>El Codigo del Equipamiento debe tener un maximo de 4 digitos";
+                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 4 digitos";
+                }
+                //sssssssssssssssssssssssssss
+                if ($("#can_apor").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Cantidad del Aporte no debe estar vacío";
                 }
 
-                if ($("#nombre").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Nombre del equipamiento no debe estar vacío";
+                if (isNaN($("#can_apor").val())) {
+                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
                 }
 
-                if (nombre.length <= 40) {
+                if (can_apor.length <= 9) {
 
                 } else {
-                    mensaje = mensaje + "<br>El Nombre del equipamiento debe tener un maximo de 40 caracteres";
+                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 9 digitos";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#rut_aporta").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Rut del Aportador no debe estar vacío";
                 }
 
-                if ($("#armaduraxd").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                if (isNaN($("#rut_aporta").val())) {
+                    mensaje = mensaje + "<br>El Rut solo pueden ser números";
                 }
 
-                if ($("#casco").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                if (rut_aporta.length <= 9) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Rut debe tener un maximo de 9 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#nom_aporta").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
                 }
 
-                if ($("#botas").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
+                if (nom_aporta.length >= 10) {
+
+                } else {
+                    mensaje = mensaje + "<br>El nombre debe tener un minimo de 10 caracteres";
                 }
 
-                if ($("#arma").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>Debe elegir un equipamiento valido";
-                }
-                
+                if (nom_aporta.length <= 35) {
 
+                } else {
+                    mensaje = mensaje + "<br>El nombre debe tener un maximo de 35 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#ap_aporta").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo apellido no debe estar vacío";
+                }
+
+                if (ap_aporta.length >= 10) {
+
+                } else {
+                    mensaje = mensaje + "<br>El apellido debe tener un minimo de 10 caracteres";
+                }
+
+                if (ap_aporta.length <= 35) {
+
+                } else {
+                    mensaje = mensaje + "<br>El apellido debe tener un maximo de 35 caracteres";
+                }
+                //ssssssssssssssssssssssssssss
+                if ($("#num_tar").val().trim().length == 0) {
+                    mensaje = mensaje + "<br>El campo Numero de la tarjeta no debe estar vacío";
+                }
+
+                if (isNaN($("#num_tar").val())) {
+                    mensaje = mensaje + "<br>El Numero de la tarjeta solo pueden ser números";
+                }
+
+                if (num_tar.length <= 16) {
+
+                } else {
+                    mensaje = mensaje + "<br>El Numero de la tarjeta debe tener un maximo de 16 digitos";
+                }
+                //ssssssssssssssssssssssssssss
                 if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
                     $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
                     $("#error").show();//hace visible el div
                     event.preventDefault();//evita que los datos del formulario se envien
-
                 }
             });
         });
@@ -76,91 +126,96 @@
 </head>
 
 <body>
-        <!--Menu Bar-->
-        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
-            <!-- Brand -->
-            <a class="navbar-brand" href="#" style="color:#000">
-                <h4>Fundación Apoyo APP</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <!-- Links -->
-                <ul class="navbar-nav mr-auto">
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Home</a>
-                    </li>
-    
-                     <!-- Dropdown -->
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
-                        <div class="dropdown-menu">
-                            <h6 class="color container">Opción</h6>
-                            <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
-                            <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
-                        </div>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Nosotros</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
-                    </li>
-    
-                </ul>
-            </div>
-        </nav>
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
 
-    <div class="container separar_top" style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">Opción</h6>
+                        <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                        <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container separar_top separar_bottom"
+        style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231);; border: 2px solid #000">
         <div class="row">
-            {% if messages %}
-            <div>
-                {% for i in messages %}
+            <div class="col-md-12 centrado">
+                <h1>Hacer Aporte</h1>
+                {% if messages %}
+                <div>
+                    {% for i in messages %}
                     <p style="color: red;">{{ i }}</p>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+
+                {% endif %}
+
+                <form action="{% url 'reg_aporte' %}" id="formulario_apor" method="POST" name="formulario_apor">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="cod_equip">Código del Aporte: </label>
+                        <input class="form-control" type="number" id="cod_apor" name="cod_apor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Cantidad Aporte: </label>
+                        <input class="form-control" type="text" id="can_apor" name="can_apor">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Rut Aportador: </label>
+                        <input class="form-control" type="text" id="rut_aporta" name="rut_aporta">
+                    </div>
+                    <div class="form-group">
+                        <label for="cod_equip">Nombre Aportador: </label>
+                        <input class="form-control" type="text" id="nom_aporta" name="nom_aporta">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Apellidos Aportador: </label>
+                        <input class="form-control" type="text" id="ap_aporta" name="ap_aporta">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre">Numero Tarjeta: </label>
+                        <input class="form-control" type="text" id="num_tar" name="num_tar">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Registrar Aporte</button>
+                    <br><br>
+
+                </form>
             </div>
-
-            {% endif %}
-
-            <form action="{% url 'reg_aporte' %}" id="formulario_apor" method="POST" name="formulario_apor">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="cod_equip">Código del Aporte: </label>
-                    <input class="form-control" type="number" id="cod_apor" name="cod_apor" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nombre">Cantidad Aporte: </label>
-                    <input class="form-control" type="text" id="can_apor" name="can_apor" required>
-                </div>
-                <div class="form-group">
-                    <label for="nombre">Rut Aportador: </label>
-                    <input class="form-control" type="text" id="rut_aporta" name="rut_aporta" required>
-                </div>
-                <div class="form-group">
-                    <label for="cod_equip">Nombre Aportador: </label>
-                    <input class="form-control" type="text" id="nom_aporta" name="nom_aporta" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="nombre">Apellidos Aportador: </label>
-                    <input class="form-control" type="text" id="ap_aporta" name="ap_aporta" required>
-                </div>
-                <div class="form-group">
-                    <label for="nombre">Numero Tarjeta: </label>
-                    <input class="form-control" type="text" id="num_tar" name="num_tar" required>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Registrar Aporte</button>
-
-
-            </form>
         </div>
     </div>
+
 </body>
 
 </html>
