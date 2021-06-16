@@ -31,3 +31,39 @@ def visualizaraporte(request):
     visaporte = APORTE.objects.all()
     contexto = {"VisuAporte": visaporte}
     return render(request, 'core/visualizaraporte.html', contexto)
+
+def eliminaraporte(request, id):
+    aport1 = APORTE.objects.get(idAporte = id)
+    aport1.delete()
+    messages.success(request, 'Aporte Eliminado')
+    return redirect('visualizaraporte')
+
+
+def editaraporte(request, id):
+    ap1 = APORTE.objects.get(idEquipo = id)
+    
+
+    contexto = {
+        "apor11" : ap1,
+        
+    }
+    return render(request, 'core/editaraporte.html', contexto)
+
+
+def edaportes(request):
+    idAportes = request.POST['iAporte']
+    cAportes = request.POST['cAporte']
+    rAportes = request.POST['rAporte']
+    nAportado = request.POST['nAportador']
+    aAportado = request.POST['aAportador']
+    nTarjet = request.POST['nTarjeta']
+
+    a1 = APORTE.objects.get(idAporte = idAportes)
+    a1.cantAporte = cAportes
+    a1.rutAportador = rAportes
+    a1.nombAportador = nAportado
+    a1.apeAportador = aAportado
+    a1.numTarjeta = nTarjet
+    a1.save()
+    messages.success(request, 'Aporte editado correctamente')
+    return redirect('editaraporte')

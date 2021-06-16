@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+</head>
+
+<body>
+        <!--Menu Bar-->
+        <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#" style="color:#000">
+                <h4>Fundación Apoyo APP</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <!-- Links -->
+                <ul class="navbar-nav mr-auto">
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Home</a>
+                    </li>
+    
+                     <!-- Dropdown -->
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                        <div class="dropdown-menu">
+                            <h6 class="color container">Opción</h6>
+                            <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                            <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                        </div>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Nosotros</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                    </li>
+    
+                </ul>
+            </div>
+        </nav>
+        <div class="container box" style="color: #b1b1b1">
+            <div class="row">
+                <form action="{% url 'edaportes' %}" id="edit_vis" method="POST" name="edit_vis">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="cod_equip">Código del Aporte: </label>
+                        <input class="form-control" type="number" value="{{ apor11.idAporte }}" id="iAporte" name="iAporte" required readonly>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="nombre">Cantidad del Aporte: </label>
+                        <input class="form-control" type="number" value="{{ apor11.cantAporte }}" id="cAporte" name="cAporte" required>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="cod_equip">Rut del Aportador: </label>
+                        <input class="form-control" type="number" value="{{ apor11.rutAportador }}" id="rAporte" name="rAporte" required readonly>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Aportador: </label>
+                        <input class="form-control" type="text" value="{{ apor11.nombAportador }}" id="nAportador" name="nAportador" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cod_equip">Apellido del Aportador: </label>
+                        <input class="form-control" type="number" value="{{ apor11.apeAportador }}" id="aAportador" name="aAportador" required readonly>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="nombre">Numero de Tarjeta: </label>
+                        <input class="form-control" type="text" value="{{ apor11.numTarjeta }}" id="nTarjeta" name="nTarjeta" required>
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary">Editar Equipamiento</button>
+    
+    
+                </form>
+            </div>
+        </div>
+</body>

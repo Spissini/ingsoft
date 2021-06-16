@@ -97,9 +97,9 @@
                     <td>| - - |</td>
                     <td>{{ n.numTarjeta }}</td>
                     <td>| - - |</td>
-                    <td><a href="">Eliminar</a></td>
+                    <td><a href="{% url 'eliminaraporte' n.idAporte %}">Eliminar</a></td>
                     <td>| - - |</td>
-                    <td><a href="">Editar</a></td>
+                    <td><a href="{% url 'editaraporte' n.idAporte %}">Editar</a></td>
                 </tr>
                 {% endfor %}
             </table>
