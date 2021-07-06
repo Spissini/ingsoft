@@ -2,6 +2,9 @@ from django.contrib import messages
 from django.http import request
 from django.shortcuts import render, redirect
 from .models import APORTE
+from django.contrib.auth import authenticate, login, logout
+from .forms import CustomUserForm
+
  
 # Create your views here
 
@@ -11,8 +14,8 @@ def home(request):
 def log_in(request):
     return render(request, 'core/sesion/log_in.html')
 
-def sign_in(request):
-    return render(request, 'core/sesion/sign_in.html')
+#def sign_in(request):
+#    return render(request, 'core/sesion/sign_in.html')
 
 def aporte(request):
     return render(request, 'core/aporte.html')
@@ -69,3 +72,39 @@ def edaportes(request):
     a1.save()
     messages.success(request, 'Aporte editado correctamente')
     return redirect('visualizaraporte')
+
+
+def ini_sesion(request):
+    u = request.POST['username']
+    p = request.POST['password']
+    user = authenticate(username = u, password = p)
+
+    if user is not None:
+        if user.is_active:
+            login(request,user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Usuario Inactivo')
+    else:
+        messages.error(request, 'Usuario o Contraseña Incorrecta')
+    return redirect('login')
+
+def cerr_sesion(request):
+    logout(request)
+    return redirect('home')
+
+def registro_usuario(request):
+    data = {
+        'form':CustomUserForm()
+
+    }
+    if request.method == 'POST':
+        formulario = CustomUserForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            username = formulario.cleaned_data['username']
+            password = formulario.cleaned_data['password1']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect(to='home')
+    return render(request, 'core/sesion/sign_in.html', data)

@@ -99,7 +99,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                    <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
                 </li>
 
             </ul>
@@ -112,29 +112,36 @@
             <div class="col-md-12 centrado"
                 style="background-color: rgba(0, 0, 0, 0.534); color: rgb(220, 226, 231); border: 2px solid #000"> <br>
                 <h2>Iniciar sesión</h2>
-                <form action="{% url 'home' %}" method="POST" name="formulario_sesion" id="formulario_sesion">
+                <form action="{% url 'sesion' %}" method="POST" id="formulario_sesion">
                     {% csrf_token %}
                     <br>
 
                     <div class="form-group">
-                        <label style="color: #dadada;" for="nombre_usuario">Nombre de Usuario:</label>
-                        <input type="text" class="form-control" name="nombre_usuario" id="nombre_usuario"
+                        <label style="color: #dadada;" for="username">Nombre de Usuario:</label>
+                        <input type="text" class="form-control" name="username" id="username"
                             placeholder="Ingrese el nombre de usuario">
                     </div>
 
                     <div class="form-group">
-                        <label style="color: #dadada;" for="contrasena">Contraseña:</label>
-                        <input type="password" class="form-control" name="contrasena" id="contrasena"
+                        <label style="color: #dadada;" for="password">Contraseña:</label>
+                        <input type="password" class="form-control" name="password" id="password"
                             placeholder="*************">
                     </div>
 
                     <div class="form-group">
-                        <div id="error" class="alert alert-danger"></div>
+                        {% if messages %}
+                        <div>
+                            {% for i in messages %}
+                            <p style="color: red;">{{ i }}</p>
+                            {% endfor %}
+                        </div>
+
+                        {% endif %}
                         <button type="submit" class="btn btn-primary">Aceptar</button>
                     </div>
 
                     <a href="#">¿Has olvidado tu contraseña?</a> <br><br>
-                    <a href="{% url 'sign_in' %}">¿No tienes cuenta? Create una ahora mismo :)</a> <br><br>
+                    <a href="{}">¿No tienes cuenta? Create una ahora mismo :)</a> <br><br>
 
                 </form>
             </div>

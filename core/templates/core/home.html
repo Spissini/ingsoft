@@ -45,11 +45,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Nosotros</a>
                 </li>
-
+                {% if user.is_authenticated %}
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <h6 style="color:rgb(20, 163, 220)">{{ user.username }}</h6>
+                
+                    
+                {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'log_in' %}">Ingresar</a>
+                    <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
                 </li>
-
+                {% endif %}
             </ul>
         </div>
     </nav>
