@@ -12,117 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#error").hide(); //ocultando el div de los errores
-
-            //indicar que las validaciones del formulario se ejecutaran solo cuando se
-            //presione el submit
-            $("#edit_vis").submit(function () {
-                var mensaje = "Por favor revisar los siguientes detalles en el formulario:";
-                var iAporte = $('#iAporte').val();
-                var cAporte = $('#cAporte').val();
-                var rAporte = $('#rAporte').val();
-                var nAportador = $('#nAportador').val();
-                var aAportador = $('#aAportador').val();
-                var nTarjeta = $('#nTarjeta').val();
-
-                if ($("#iAporte").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Codigo del Aporte no debe estar vacío";
-                }
-
-                if (isNaN($("#iAporte").val())) {
-                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
-                }
-
-                if (iAporte.length <= 4) {
-
-                } else {
-                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 4 digitos";
-                }
-                //sssssssssssssssssssssssssss
-                if ($("#cAporte").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Cantidad del Aporte no debe estar vacío";
-                }
-
-                if (isNaN($("#cAporte").val())) {
-                    mensaje = mensaje + "<br>El codigo solo pueden ser números";
-                }
-
-                if (cAporte.length <= 9) {
-
-                } else {
-                    mensaje = mensaje + "<br>El Codigo del Aporte debe tener un maximo de 9 digitos";
-                }
-                //ssssssssssssssssssssssssssss
-                if ($("#rAporte").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Rut del Aportador no debe estar vacío";
-                }
-
-                if (isNaN($("#rAporte").val())) {
-                    mensaje = mensaje + "<br>El Rut solo pueden ser números";
-                }
-
-                if (rAporte.length <= 9) {
-
-                } else {
-                    mensaje = mensaje + "<br>El Rut debe tener un maximo de 9 caracteres";
-                }
-                //ssssssssssssssssssssssssssss
-                if ($("#nAportador").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo nombre no debe estar vacío";
-                }
-
-                if (nAportador.length >= 10) {
-
-                } else {
-                    mensaje = mensaje + "<br>El nombre debe tener un minimo de 10 caracteres";
-                }
-
-                if (nAportador.length <= 35) {
-
-                } else {
-                    mensaje = mensaje + "<br>El nombre debe tener un maximo de 35 caracteres";
-                }
-                //ssssssssssssssssssssssssssss
-                if ($("#aAportador").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo apellido no debe estar vacío";
-                }
-
-                if (aAportador.length >= 10) {
-
-                } else {
-                    mensaje = mensaje + "<br>El apellido debe tener un minimo de 10 caracteres";
-                }
-
-                if (aAportador.length <= 35) {
-
-                } else {
-                    mensaje = mensaje + "<br>El apellido debe tener un maximo de 35 caracteres";
-                }
-                //ssssssssssssssssssssssssssss
-                if ($("#nTarjeta").val().trim().length == 0) {
-                    mensaje = mensaje + "<br>El campo Numero de la tarjeta no debe estar vacío";
-                }
-
-                if (isNaN($("#nTarjeta").val())) {
-                    mensaje = mensaje + "<br>El Numero de la tarjeta solo pueden ser números";
-                }
-
-                if (nTarjeta.length <= 16) {
-
-                } else {
-                    mensaje = mensaje + "<br>El Numero de la tarjeta debe tener un maximo de 16 digitos";
-                }
-                //ssssssssssssssssssssssssssss
-                if (mensaje != "Por favor revisar los siguientes detalles en el formulario:") {
-                    $("#error").html(mensaje); //mostrando el texto de la variable en el div del html
-                    $("#error").show();//hace visible el div
-                    event.preventDefault();//evita que los datos del formulario se envien
-                }
-            });
-        });
-    </script>
+    
 </head>
 
 <body>
@@ -201,7 +91,7 @@
                         <input class="form-control" type="text" value="{{ apor11.numTarjeta }}" id="nTarjeta" name="nTarjeta" required>
                     </div>
     
-                    <button type="submit" class="btn btn-primary">Editar Equipamiento</button>
+                    <button type="submit" class="btn btn-primary">Editar Aporte</button>
     
     
                 </form>
