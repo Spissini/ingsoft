@@ -119,7 +119,7 @@ def regis_resident(request):
     cuidadresident = request.POST['cuida_res']
     ficharesidente = request.FILES['ficha_res']
 
-    residente.objects.create(rutResident = rutresident, nombsResident = nombsresident, edadResident = edadresident ,tutoRresi = tutorresi, medicaResident = medicaresident, \
+    residente.objects.create(rutResident = rutresident, nombsResident = nombsresident, edadResident = edadresident ,tutorResi = tutorresi, medicaResident = medicaresident, \
         saludResident = saludresident, cuidadResident = cuidadresident, fichaResidente = ficharesidente)
 
     messages.success(request,'Residente registrado')
@@ -130,13 +130,13 @@ def agregar_res(request):
     return render(request, 'core/agregarres.html')
 
 def regis_ingreso(request):
-    cod_ingre = request.POST['cod_ingr']
+    aa1 = request.POST['cod_ingr']
     salida_res = request.POST['sali_res']
     ingreso_res = request.POST['ing_res']
     rut_res = request.POST['rut_resi']
     rut_res2 = residente.objects.get(rutResident = rut_res)
 
-    ingresos.objects.create(idIngreso = cod_ingre, salidaRes = salida_res, ingresoRes = ingreso_res ,Residente = rut_res2)
+    ingresos.objects.create(idIngreso = aa1, salidaRes = salida_res, ingresoRes = ingreso_res ,Residente = rut_res2)
 
     messages.success(request,'Equipamiento registrado')
     return redirect('regsalida')
