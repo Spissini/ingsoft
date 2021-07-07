@@ -1,12 +1,13 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import aporte, home, ini_sesion , registro_usuario ,cerr_sesion, reg_aporte, visualizaraporte, eliminaraporte, editaraporte, edaportes
+from .views import aporte, home, ini_sesion , registro_usuario ,cerr_sesion, reg_aporte, visualizaraporte, eliminaraporte, editaraporte, edaportes, agregar_res, regis_resident, \
+    regis_ingreso, regsalida
 from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
     path('', home, name='home'),
-   # path('sign_in', sign_in, name='sign_in'),
+    # path('sign_in', sign_in, name='sign_in'),
     path('aporte', aporte, name='aporte'),
     path('reg_aporte', reg_aporte, name='reg_aporte'),
     path('visualizaraporte', visualizaraporte, name='visualizaraporte'),
@@ -20,5 +21,9 @@ urlpatterns = [
 
     path('registro/', registro_usuario, name= 'registro_usuario'),
 
+    path('agregar_res', agregar_res, name='agregar_res'),
+    path('regis_resident', regis_resident, name='regis_resident'),
 
+    path('regis_ingreso', regis_ingreso, name='regis_ingreso'),
+    path('regsalida', regsalida, name='regsalida'),
 ]

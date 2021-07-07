@@ -10,7 +10,7 @@ class APORTE(models.Model):
     nombAportador = models.CharField(max_length=15, verbose_name='Nombre del aportador')
     apeAportador = models.CharField(max_length=25, verbose_name='Apellidos del aportador')
     numTarjeta = models.IntegerField(verbose_name='Numero de la Tarjeta')
-    def str(self):
+    def __str__(self):
             return self.idAporte
 
 #class EMPRETAIL(models.Model):
@@ -36,3 +36,24 @@ class APORTE(models.Model):
 #    def __str__(self):
 #        return self.id_Aporte
 
+class residente(models.Model):
+    rutResident = models.IntegerField(primary_key=True, verbose_name='Rut aporte')
+    nombsResident = models.CharField(max_length=50, verbose_name='Nombre residente')
+    edadResident = models.IntegerField(verbose_name='Edad residente')
+    tutorResi = models.CharField(max_length=50, verbose_name='Nombre tutor')
+    medicaResident = models.CharField(max_length=50, verbose_name='Medicamentos')
+    saludResident = models.CharField(max_length=50, verbose_name='salud del residente')
+    cuidadResident = models.CharField(max_length=50, verbose_name='Cuidados especiales')
+    fichaResidente = models.ImageField(upload_to="Ficha_medica", null = True)
+
+    def str(self):
+            return self.rutResident
+
+class ingresos(models.Model):
+    idIngreso = models.IntegerField(primary_key=True, verbose_name='Id registro de salida')
+    salidaRes = models.CharField(max_length=15, verbose_name='Salida de residente')
+    ingresoRes = models.CharField(max_length=15, verbose_name='Ingreso de residente')
+    Residente = models.ForeignKey(residente, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.idIngreso

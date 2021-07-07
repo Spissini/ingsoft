@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import request
 from django.shortcuts import render, redirect
-from .models import APORTE
+from .models import APORTE, residente, ingresos
 from django.contrib.auth import authenticate, login, logout
 from .forms import CustomUserForm
 
@@ -108,3 +108,39 @@ def registro_usuario(request):
             login(request, user)
             return redirect(to='home')
     return render(request, 'core/sesion/sign_in.html', data)
+
+def regis_resident(request):
+    rutresident = request.POST['rut_res']
+    nombsresident = request.POST['nomb_res']
+    edadresident = request.POST['edad_res']
+    tutorresi = request.POST['tutor']
+    medicaresident = request.POST['medic_res']
+    saludresident = request.POST['salud_res']
+    cuidadresident = request.POST['cuida_res']
+    ficharesidente = request.FILES['ficha_res']
+
+    residente.objects.create(rutResident = rutresident, nombsResident = nombsresident, edadResident = edadresident ,tutoRresi = tutorresi, medicaResident = medicaresident, \
+        saludResident = saludresident, cuidadResident = cuidadresident, fichaResidente = ficharesidente)
+
+    messages.success(request,'Residente registrado')
+    return redirect('agregar_res')
+
+def agregar_res(request):
+
+    return render(request, 'core/agregarres.html')
+
+def regis_ingreso(request):
+    cod_ingre = request.POST['cod_ingr']
+    salida_res = request.POST['sali_res']
+    ingreso_res = request.FILES['ing_res']
+    rut_res = request.POST['rut_resi']
+    rut_res2 = residente.objects.get(idArmadura = rut_res)
+
+    ingresos.objects.create(idIngreso = cod_ingre, salidaRes = salida_res, ingresoRes = ingreso_res ,Residente = rut_res2)
+
+    messages.success(request,'Equipamiento registrado')
+    return redirect('regsalida')
+
+def regsalida(request):
+
+    return render(request, 'core/supervisor/regingreso.html')
