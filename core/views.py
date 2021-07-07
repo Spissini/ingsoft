@@ -132,9 +132,9 @@ def agregar_res(request):
 def regis_ingreso(request):
     cod_ingre = request.POST['cod_ingr']
     salida_res = request.POST['sali_res']
-    ingreso_res = request.FILES['ing_res']
+    ingreso_res = request.POST['ing_res']
     rut_res = request.POST['rut_resi']
-    rut_res2 = residente.objects.get(idArmadura = rut_res)
+    rut_res2 = residente.objects.get(rutResident = rut_res)
 
     ingresos.objects.create(idIngreso = cod_ingre, salidaRes = salida_res, ingresoRes = ingreso_res ,Residente = rut_res2)
 
