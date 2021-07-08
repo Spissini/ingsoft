@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <title>Equipamientos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+
+</head>
+
+<body>
+      <!--Menu Bar-->
+      <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                 <!-- Dropdown -->
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">Opción</h6>
+                        <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                        <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <h6 style="color:rgb(20, 163, 220)">{{ user.username }}</h6>
+                
+                    
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <br><br>
+
+    <div class="container-fluid centrado">
+        <h1
+            style="font-size: 45px; background-color:#20222585; text-shadow: 3px 4px 3px #000; color:  rgb(220, 226, 231);">
+            Visualizar salida e ingresos de residente</h1>
+    </div>
+
+    <div class="container centrado">
+        {% if messages %}
+        <div>
+            {% for i in messages %}
+            <p style="color: red;">{{ i }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="row" style="background-color: rgba(0, 0, 0, 0.404); color: rgb(220, 226, 231);; border: 2px solid #000">
+            <table>
+                <tr>
+                    <td>Rut residente</td> <br>
+                    <td></td>
+                    <td>Nombre residente</td> <br>
+                    <td></td>
+                    <td>Edad residente</td>
+                    <td></td>
+                    <td>Tutor residente</td> <br>
+                    <td></td>
+                    <td>Medicamentos</td> <br>
+                    <td></td>
+                    <td>Salud residente</td> <br>
+                    <td></td>
+                    <td>Cuidados</td>
+                    <td></td>
+                    <td>Ficha</td> <br>
+                    <td></td>
+                    <td>Eliminar</td>
+                    <td></td>
+                    <td>Editar</td>
+
+                </tr>
+                {% for n in Vistares %}
+                <tr>
+                    <td>{{ n.rutResident }}</td> 
+                    <td>| - |</td>
+                    <td>{{ n.nombsResident }}</td>
+                    <td>| - |</td>
+                    <td>{{ n.edadResident }}</td>
+                    <td>| - |</td>
+                    <td>{{ n.tutorResi }}</td>
+                    <td>| - |</td>
+                    <td>{{ n.medicaResident }}</td>
+                    <td>| - |</td>
+                    <td>{{ n.saludResident }}</td>
+                    <td>| - |</td>
+                    <td>{{ n.cuidadResident }}</td>
+                    <td>| - |</td>
+                    <td>
+                        {% if n.fichaResidente %}
+                        <img src="{{ n.fichaResidente.url }}" style="width: 100%;max-width: 100px;">
+                        {% endif %}
+                    </td>
+                    <td>| - |</td>
+                    <td><a href="{% url 'eliminaresidente' n.rutResident %}">Eliminar</a></td>
+                    <td>| - |</td>
+                    <td><a href="{% url 'editaresidente' n.rutResident %}">Editar</a></td>
+                </tr>
+                {% endfor %}
+        </div>
+
+</body>
+
+</html>
+

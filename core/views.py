@@ -133,10 +133,10 @@ def regis_ingreso(request):
     aa1 = request.POST['cod_ingr']
     salida_res = request.POST['sali_res']
     ingreso_res = request.POST['ing_res']
-    rut_res = request.POST['rut_resi']
-    rut_res2 = residente.objects.get(rutResident = rut_res)
+    rut_res1 = request.POST['rut_resi']
+    rut_res2 = residente.objects.get(rutResident = rut_res1)
 
-    ingresos.objects.create(idIngreso = aa1, salidaRes = salida_res, ingresoRes = ingreso_res ,Residente = rut_res2)
+    ingresos.objects.create(idIngreso = aa1, salidaRes = salida_res, ingresoRes = ingreso_res , Residente = rut_res2)
 
     messages.success(request,'Equipamiento registrado')
     return redirect('regsalida')
@@ -144,3 +144,42 @@ def regis_ingreso(request):
 def regsalida(request):
 
     return render(request, 'core/supervisor/regingreso.html')
+
+def visresidente(request):
+    vre = residente.objects.all()
+    contexto = {"Vistares":vre }
+
+    return render(request, 'core/supervisor/visresidente.html', contexto)
+
+def eliminaresidente(request, id):
+    reside1 = residente.objects.get(rutResident = id)
+    reside1.delete()
+    messages.success(request, 'Residente Eliminado')
+    return redirect('visresidente')
+
+def editaresidente(request, id):
+    er1 = residente.objects.get(rutResident = id)
+    contexto = {
+        "eres11" : er1
+    }
+    return render(request, 'core/editar_residente.html', contexto)
+    
+def edresidente(request):
+    rutresident2 = request.POST['ole1']
+    nombsresident2 = request.POST['ole2']
+    edadresident2 = request.POST['ole3']
+    tutorresi2 = request.POST['ole4']
+    medicaresident2 = request.POST['ole5']
+    saludresident2 = request.POST['ole6']
+    cuidadresident2 = request.POST['ole7']
+
+    a2 = residente.objects.get(rutResident = rutresident2)
+    a2.cantAporte = nombsresident2
+    a2.rutAportador = edadresident2
+    a2.nombAportador = tutorresi2
+    a2.apeAportador = medicaresident2
+    a2.numTarjeta = saludresident2
+    a2.numTarjeta = cuidadresident2
+    a2.save()
+    messages.success(request, 'Residente editado correctamente')
+    return redirect('visresidente')
