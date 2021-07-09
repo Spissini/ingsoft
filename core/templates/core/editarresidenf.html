@@ -127,7 +127,7 @@
     <div class="container-fluid centrado">
         <h1
             style="font-size: 45px; background-color:#20222585; text-shadow: 3px 4px 3px #000; color:  rgb(220, 226, 231);">
-            Registrar salidas e ingresos de residente</h1>
+            Editar residente</h1>
     </div>
     <br><br>
     
@@ -142,35 +142,44 @@
 
             {% endif %}
 
-            <form action="{% url 'regis_ingreso' %}" id="regist_ingre" method="POST" name="regist_ingre" enctype="multipart/form-data">
+            <form action="{% url 'edresidente' %}" id="editar_resi2" method="POST" name="editar_resi2" enctype="multipart/form-data">
                 {% csrf_token %}
-
                 <div class="form-group">
-                    <label>Rut del residente: </label>
-                    <select class="form-control" id="rut_resi" name="rut_resi">
-                        <option value="0">Seleccionar</option>
-                        {% for x in rut %}
-                            <option value="{{ x.rutResident }}">{{ x.rutResident }}</option>
-                        {% endfor %}
-                    </select>
+                    <label for="ole1">Rut del residente:</label>
+                    <input class="form-control" type="text" value="{{ eres13.rutResident }}" id="oleo1" name="oleo1" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="cod_ingreso">Numero de salida:</label>
-                    <input class="form-control" type="number" id="cod_ingreso" name="cod_ingreso" required>
+                    <label for="ole2">Nombre del residente: </label>
+                    <input class="form-control" type="text" value="{{ eres13.nombsResident }}" id="oleo2" name="oleo2" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="sali_res">Fecha de salida: </label>
-                    <input class="form-control" type="text" id="sali_res" name="sali_res" required>
+                    <label for="ole3">Edad del residente:</label>
+                    <input class="form-control" type="number" value="{{ eres13.edadResident }}" id="oleo3" name="oleo3" required>
                 </div>
 
                 <div class="form-group">
-                    <label for="ing_res">Fecha de ingreso:</label>
-                    <input class="form-control" type="number" id="ing_res" name="ing_res" required>
+                    <label for="ole4">tutor del residente: </label>
+                    <input class="form-control" type="text" value="{{ eres13.tutorResi }}" id="oleo4" name="oleo4" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Registrar Equipamiento</button>
+                <div class="form-group">
+                    <label for="ole5">Medicamentos del residente: </label>
+                    <input class="form-control" type="text" value="{{ eres13.medicaResident }}" id="oleo5" name="oleo5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ole6">Salud del residente: </label>
+                    <input class="form-control" type="text" value="{{ eres13.saludResident }}" id="oleo6" name="oleo6" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ole7">Cuidados especiales del residente: </label>
+                    <input class="form-control" type="text" value="{{ eres13.cuidadResident }}" id="oleo7" name="oleo7" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Editar Residente</button>
 
             </form>
         </div>

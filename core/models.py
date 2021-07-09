@@ -44,7 +44,7 @@ class residente(models.Model):
     medicaResident = models.CharField(max_length=50, verbose_name='Medicamentos')
     saludResident = models.CharField(max_length=50, verbose_name='salud del residente')
     cuidadResident = models.CharField(max_length=50, verbose_name='Cuidados especiales')
-    fichaResidente = models.ImageField(upload_to="Ficha_medica", null = True)
+    fichaResidente = models.ImageField(upload_to="Ficha", null = True)
 
     def str(self):
             return self.rutResident

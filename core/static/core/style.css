@@ -43,3 +43,9 @@ body{
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
+
+.responsive_img_albion{
+    width: 100%;
+    max-width: 300px;
+    border: 3px solid crimson;
+}

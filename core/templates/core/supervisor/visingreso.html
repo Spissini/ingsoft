@@ -3,7 +3,7 @@
 {% load static %}
 
 <head>
-    <title>Equipamientos</title>
+    <title>Visualizar salidas</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
     <div class="container-fluid centrado">
         <h1
             style="font-size: 45px; background-color:#20222585; text-shadow: 3px 4px 3px #000; color:  rgb(220, 226, 231);">
-            Visualizar Residente</h1>
+            Visualizar ingresos y salidas</h1>
     </div>
 
     <div class="container centrado">
@@ -83,48 +83,27 @@
                     <td></td>
                     <td>Nombre residente</td> <br>
                     <td></td>
-                    <td>Edad residente</td>
+                    <td>Numero de salida</td> <br>
                     <td></td>
-                    <td>Tutor residente</td> <br>
+                    <td>fecha salida</td> <br>
                     <td></td>
-                    <td>Medicamentos</td> <br>
+                    <td>fecha ingreso</td> <br>
                     <td></td>
-                    <td>Salud residente</td> <br>
-                    <td></td>
-                    <td>Cuidados</td>
-                    <td></td>
-                    <td>Ficha</td> <br>
-                    <td></td>
-                    <td>Eliminar</td>
-                    <td></td>
-                    <td>Editar</td>
 
                 </tr>
-                {% for n in Vistares %}
+                {% for n in Visingres %}
                 <tr>
                     <td>{{ n.rutResident }}</td> 
                     <td>|</td>
                     <td>{{ n.nombsResident }}</td>
                     <td>|</td>
-                    <td>{{ n.edadResident }}</td>
+                    <td>{{ n.idIngreso }}</td>
                     <td>|</td>
-                    <td>{{ n.tutorResi }}</td>
+                    <td>{{ n.salidaRes }}</td>
                     <td>|</td>
-                    <td>{{ n.medicaResident }}</td>
+                    <td>{{ n.ingresoRes }}</td>
                     <td>|</td>
-                    <td>{{ n.saludResident }}</td>
-                    <td>|</td>
-                    <td>{{ n.cuidadResident }}</td>
-                    <td>|</td>
-                    <td>
-                        {% if n.fichaResidente %}
-                        <img src="{{ n.fichaResidente.url }}" style="width: 100%;max-width: 100px;">
-                        {% endif %}
-                    </td>
-                    <td>|</td>
-                    <td><a href="{% url 'eliminaresidente' n.rutResident %}">Eliminar</a></td>
-                    <td>|</td>
-                    <td><a href="{% url 'editaresidente' n.rutResident %}">Editar</a></td>
+                    
                 </tr>
                 {% endfor %}
         </div>

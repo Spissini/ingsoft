@@ -142,8 +142,16 @@ def regis_ingreso(request):
     return redirect('regsalida')
 
 def regsalida(request):
+    hehe = residente.objects.all()
+    contexto = {"rut": hehe}
+    return render(request, 'core/supervisor/regingreso.html', contexto)
 
-    return render(request, 'core/supervisor/regingreso.html')
+def visingreso(request):
+    vis = ingresos.objects.all()
+    contexto = {"Vising":vis }
+
+    return render(request, 'core/supervisor/visingreso.html', contexto) 
+
 
 def visresidente(request):
     vre = residente.objects.all()
@@ -183,3 +191,39 @@ def edresidente(request):
     a2.save()
     messages.success(request, 'Residente editado correctamente')
     return redirect('visresidente')
+
+def visresidenf(request):
+    vrenf = residente.objects.all()
+    contexto = {"Vistares":vrenf }
+    return render(request, 'core/visresidenf.html', contexto)
+
+
+def editaresidenf(request, id):
+    erf1 = residente.objects.get(rutResident = id)
+    contexto = {
+        "eres13" : erf1
+    }
+    return render(request, 'core/supervisor/editaresidenf.html')
+
+def edresidenf(request):
+    rutresident3 = request.POST['oleo1']
+    nombsresident3 = request.POST['oleo2']
+    edadresident3 = request.POST['oleo3']
+    tutorresi3 = request.POST['oleo4']
+    medicaresident3 = request.POST['oleo5']
+    saludresident3 = request.POST['oleo6']
+    cuidadresident3 = request.POST['oleo7']
+
+    a2 = residente.objects.get(rutResident = rutresident3)
+    a2.cantAporte = nombsresident3
+    a2.rutAportador = edadresident3
+    a2.nombAportador = tutorresi3
+    a2.apeAportador = medicaresident3
+    a2.numTarjeta = saludresident3
+    a2.numTarjeta = cuidadresident3
+    a2.save()
+    messages.success(request, 'Residente editado correctamente')
+    return redirect('visresidenf')
+
+def menu(request):
+    return render(request, 'core/menuadmin.html')

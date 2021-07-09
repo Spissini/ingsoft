@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <title>Menú supervisor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{% static 'core/style.css' %}" />
+
+</head>
+
+<body>
+
+    <!--Menu Bar-->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #007e6f">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#" style="color:#000">
+            <h4>Fundación Apoyo APP</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">Home</a>
+                </li>
+
+                 <!-- Dropdown -->
+                 <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">Aporte</a>
+                    <div class="dropdown-menu">
+                        <h6 class="color container">Opción</h6>
+                        <a class="dropdown-item" href="{% url 'aporte' %}">Hacer aporte</a>
+                        <a class="dropdown-item" href="{% url 'visualizaraporte' %}">Visualizar aportes</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item"></li>
+                    <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesión</a>
+                    <h6 style="color:rgb(20, 163, 220)">{{ user.username }}</h6>
+                
+                    
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Ingresar</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <br> <br>
+
+    <div class="container-fluid centrado">
+        <h1
+            style="font-size: 45px; background-color:#202225; text-shadow: 3px 4px 3px #000; color:  rgb(220, 226, 231);">
+            Menú de supervisor</h1>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 centrado">
+                <a href="{% url 'agregar_res' %}">
+                    <img src="{% static 'core/img/basededatos1.png' %}" alt="registo residente" style="width: 100%; max-width: 400px; border: 3px solid crimson;">
+                    <h2 style="color: rgb(0, 0, 0);">Registrar un residente</h2>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-12 centrado">
+                <a href="{% url 'visresidente' %}">
+                    <img src="{% static 'core/img/basededatos2.jpg' %}" alt="visualizar residente"
+                        class="responsive_img_albion">
+                    <h2 style="color: rgb(0, 0, 0);">Visualizar residentes</h2>
+                </a>
+            </div>
+        </div>
+        <br><br>
+        <div class="row">
+            <div class="col-md-6 col-sm-12 centrado">
+                <a href="{% url 'regsalida' %}">
+                    <img src="{% static 'core/img/basededatos1.png' %}" alt="registrar salida" style="width: 100%; max-width: 400px; border: 3px solid crimson;" >
+                    <h2 style="color: rgb(0, 0, 0);">Registrar salida e ingreso</h2>
+                </a>
+            </div>
+            <div class="col-md-6 col-sm-12 centrado">
+                <a href="{% url 'visingreso' %}">
+                    <img src="{% static 'core/img/basededatos2.jpg' %}" alt="visualizar salida" class="responsive_img_albion">
+                    <h2 style="color: rgb(0, 0, 0);">Visualizar salidas e ingresos</h2>
+                </a>
+            </div>
+        </div>
+        
+</body>
+
+</html>
